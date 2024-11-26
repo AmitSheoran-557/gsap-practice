@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-black">
+    <h1 class="text-3xl text-white font-bold underline mb-10  ">
+        Hello world!
+    </h1>
+    <div class="flex justify-center mb-10">
+        <button
+            class="max-w-[190px] px-8 py-3 flex justify-center relative btn  items-center h-[40px] group bg-black rounded-full text-lg text-white border-[2px] border-[#0ae448] font-mono ">
+            <img class="absolute w-8 hidden group-hover:block star left-12 z-[-1]"
+                src="/assets/img/pngimg.com_-_star_PNG41482-removebg-preview.png" alt="">
+            <span class="get duration-300 ease-linear">Get</span>
+            <span class="gsap flex justify-center items-center duration-300 ease-linear ml-2">GSAP <svg
+                    class="p-[2px] border border-[sticky] rounded-full ml-[3px] " width="14px"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 11" aria-hidden="true">
+                    <path fill="white" d="M4.055 0v7.71l-3-3L0 5.79l4.805 4.804 4.804-4.805-1.054-1.078-3 3V0h-1.5Z">
+                    </path>
+                </svg></span> </button>
+    </div>
+    <section class="section-1 min-h-screen bg-blue-500"></section>
+    <section class="section-2 min-h-screen bg-green-500 flex justify-center items-center">
+        <div class="box w-10 h-10 bg-red-700"></div>
+    </section>
+    <section class="section-3 min-h-screen bg-pink-500"></section>
+    <section class="section-4 min-h-screen bg-yellow-500"></section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="./assets/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            gsap.to(".box", {
+                x: 400,
+                duration: 3,
+                width: 170,
+                height: 70,
+                repeat:3,
+                yoyo:true,
+                scrollTrigger: {
+                    trigger: ".section-2",
+                    start: "top 30%",
+                    end: "bottom 70%",
+                    markers: true,
+                    scrub: 3,
+                    ease:"bounce",
+                    pin: true,
+                }
+            });
+            gsap.matchMedia().add("(max-width: 600px)", () => {
+                gsap.to(".box", {
+                    x: -200,
+                    duration: 10,
+                    width: 470,
+                    height: 170,
+                    scrollTrigger: {
+                        trigger: ".section-2",
+                        start: "top 30%",
+                        end: "bottom 70%",
+                        markers: true,
+                        scrub: 3,
+                        pin: true
+                    }
+                });
+            });
+        });
+
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+
+</body>
+
+</html>
